@@ -1,46 +1,70 @@
-class ExampleClass {
-  var value;
-  var type;
+import 'variable.dart';
 
-  var name = "class name";
-  static var age = 10;
+class MyBaseClass {
+  var name;
+  var age;
 
-  // 1. construct format -> new ExampleClass(value : "value", type  : "type");
-  ExampleClass({this.value, this.type}) {}
-
-  // 2. construct format -> new ExampleClass("value", "type");
-  // ExampleClass(this.value, this.type) {}
-
-  // 3. construct format  -> new ExampleClass("value", "type");
-  // ExampleClass(var value, var type) {}
-
-  static sayInfo() {
-    print("==================");
-    print(age);
-  }
-
-  sayName() {
-    print("==================");
-    print(age);
-    print(name);
-  }
-
-  printValAndType() {
-    print("type is ${type}, val is ${value}");
+  sayInfo() {
+    print("name:${name},age: ${age}");
   }
 }
 
+class OneClass extends MyBaseClass {
+  var name;
+  var age;
+
+  // 1. construct format -> new ExampleClass(value : "value", type  : "type");
+  OneClass({this.name, this.age});
+
+  static hiStaic() {
+    print("hi static");
+  }
+}
+
+class TwoClass extends MyBaseClass {
+  var name;
+  var age;
+
+  // 2. construct format -> new ExampleClass("value", "type");
+  TwoClass(this.name, this.age);
+}
+
+class ThreeClass extends MyBaseClass {
+  var name;
+  var age;
+
+  // 3. construct format  -> new ExampleClass("value", "type");
+  ThreeClass(var key, var value) {
+    this.name = key;
+    this.age = value;
+  }
+}
+
+class FourClass extends MyBaseClass {
+  var name;
+  var age;
+
+  FourClass.origin(Map map)
+      : name = map['name'],
+        age = map['age']{
+            print("this is four_class in origin");
+        }
+}
+
 void main(List<String> args) {
-  ExampleClass.sayInfo();
+  OneClass.hiStaic();
 
-
-  // 1. ExampleClass({this.value, this.type}) {}
-  new ExampleClass(value: "value", type: "type").printValAndType();
-
+  // 1. construct format -> new ExampleClass(value : "value", type  : "type");
+  var one_class = OneClass(name: "one_class", age: 1);
+  one_class.sayInfo();
 
   // 2. ExampleClass(this.value, this.type) {}
-  // new ExampleClass("val",  "type").printValAndType();
-
+  var two_class = TwoClass("two_calss", 2);
+  two_class.sayInfo();
   // 3. ExampleClass(var value, var type) {}
-  // new ExampleClass("val",  "type").printValAndType();
+  var three_class = ThreeClass("three_class", 3);
+  three_class.sayInfo();
+
+  var four_class = FourClass.origin({'name' : 'four_class', 'age':'4'});
+  four_class.sayInfo();
 }
