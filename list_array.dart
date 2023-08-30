@@ -21,6 +21,9 @@ void main(List<String> args) {
   }
 
   // remove item
+  my_list.remove('3');
+  my_list.removeAt(0);
+  // add item
   my_list.add('5');
   // insert item
   my_list.insert(0, '0');
