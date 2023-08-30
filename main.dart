@@ -25,8 +25,7 @@ class Point {
 
   setY(int y) {
     this.y = y;
-    {
-        }
+    {}
   }
 }
 
