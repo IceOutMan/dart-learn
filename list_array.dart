@@ -30,4 +30,8 @@ void main(List<String> args) {
 
   print("==============");
   my_list.forEach((element) => {print(element)});
+
+  print("==============");
+  var doubleList = List.generate(10, (i) => i * 2);
+  doubleList.forEach((element) => {print(element), print(element * 2)});
 }
